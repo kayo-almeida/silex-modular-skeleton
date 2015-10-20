@@ -22,13 +22,10 @@ if( file_exists( "config/config.dev.php" ) ) {
     die( "Nenhum arquivo de configuração encontrado" );
 }
 
-// Define a pasta RAIZ
-define("ROOT_PATH", dirname(__DIR__));
-
 // Carrega outras configurações / funções
-require_once( "autoload.php" );
-require_once( "mimes.php" );
-require_once( "doctypes.php" );
+require_once( "autoload.php" ); // obrigatório
+if( file_exists("mimes.php") ) require_once( "mimes.php" );
+if( file_exists("doctypes.php") ) require_once( "doctypes.php" );
 
 
 // Define os módulos utilizados
