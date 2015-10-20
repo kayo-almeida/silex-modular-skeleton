@@ -1,0 +1,72 @@
+<?php echo \Modules\Base\Helper\HtmlHelper::doctype( "html5" ); ?>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="<?php echo \Modules\Base\Helper\UrlHelper::assetsURL("exemplo/images/favicon.ico") ?>">
+
+    <title>Exemplo - Silex Modular Skeleton</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo \Modules\Base\Helper\UrlHelper::assetsURL("exemplo/css/bootstrap.min.css"); ?>" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="<?php echo \Modules\Base\Helper\UrlHelper::assetsURL("exemplo/css/main.css"); ?>" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="<?php echo $app['url_generator']->generate('exemplo_home'); ?>">Silex Modular Skeleton</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form method="post" action="<?php echo $app['url_generator']->generate('exemplo_login'); ?>" class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name Here" name="name" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Send</button>
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <?php if( !isset($actual) ) : ?>
+            <h1>Hello <?php echo isset($nome) && !empty($nome) ? $nome : "World"; ?>!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis nisl eget vestibulum pharetra. Pellentesque eleifend ac diam sit amet congue. Nulla laoreet rhoncus est, et bibendum lacus posuere vitae. Quisque ornare sem nisi, vitae lobortis ligula pellentesque porta. Etiam vel quam vitae quam tincidunt varius et eget lectus. Nulla volutpat, ipsum at pharetra gravida, massa justo imperdiet nisl, vitae viverra massa quam vitae arcu. Sed tincidunt erat nec lobortis luctus. Duis enim urna, semper sed nibh sit amet, dignissim ornare purus.</p>
+        <?php else : ?>
+            <h1><?php echo $actual->titulo; ?></h1>
+            <p><?php echo $actual->content; ?></p>
+        <?php endif; ?>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <?php foreach( $headings as $heading ) : ?>
+            <div class="col-md-4">
+                <h2><?php echo $heading->titulo; ?></h2>
+                <p><?php echo $heading->content; ?></p>
+                <p><a class="btn btn-default" href="<?php echo $app['url_generator']->generate('exemplo_heading', array("id" => $heading->id)); ?>" role="button">View details &raquo;</a></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Silex Modular Skeleton 2015</p>
+    </footer>
+</div> <!-- /container -->
+
+
+</body>
+</html>

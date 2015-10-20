@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+*~
+.DS_Store
+.idea
+vendor
+config/config.dev.php
+config/config.hom.php
+data/logs
+public/uploads
+
