@@ -10,7 +10,7 @@
  */
 
 // URL
-define( "APPURL", "http://localhost/testes/silex/public" );
+define( "APPURL", "http://localhost/silex-modular-skeleton/public" );
 
 // BANCO DE DADOS
 define( "DB_DRIVER", "mysql" );
