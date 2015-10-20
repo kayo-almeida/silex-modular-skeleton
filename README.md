@@ -46,4 +46,4 @@ Esse diretório talvez seja o mais complexo, mas não necessita de alteração p
 
 #### Dúvidas, sugestões e reclamações:
 
-** kayo.almeida.dev@gmail.com **
+kayo.almeida.dev@gmail.com
