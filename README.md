@@ -43,3 +43,7 @@ Esse diretório talvez seja o mais complexo, mas não necessita de alteração p
 ## Conclusão
 
 É possível observar que não houve alterações no método de trabalhar com o Silex, houve apenas uma reorganização ;)
+
+#### Dúvidas, sugestões e reclamações:
+
+** kayo.almeida.dev@gmail.com **
