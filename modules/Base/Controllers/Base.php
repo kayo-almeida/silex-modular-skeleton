@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Controller\Base;
+namespace Modules\Base\Controller;
 
 interface Base
 {

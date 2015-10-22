@@ -41,7 +41,7 @@ $app['debug'] = DEBUG;
 // Inicia os controllers
 foreach( $modulos as $modulo ) {
     core_autoload(BASEPATH . '/modules/' . $modulo);
-    $className = '\\Modules\\Controller\\' . $modulo . '\\' . $modulo;
+    $className = '\\Modules\\' . $modulo . '\\Controller\\' . $modulo;
     if(class_exists($className)) new $className($app);
 }
 

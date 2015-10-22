@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Controller\Exemplo;
+namespace Modules\Exemplo\Controller;
 
 use Modules\Base\Helper\DataBaseHelper;
 use Modules\Base\Helper\SwiftMailerHelper;
 use Modules\Base\Helper\ViewHelper;
-use Modules\Controller\Base\Base;
+use Modules\Base\Controller\Base;
 use Symfony\Component\HttpFoundation\Request;
 
 class Exemplo implements Base

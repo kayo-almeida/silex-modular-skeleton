@@ -35,10 +35,10 @@ Aqui temos o arquivo *index.php* e um *.htaccess* simples que força o acesso se
 ### src
 Esse diretório talvez seja o mais complexo, mas não necessita de alteração para instalação do projeto. Segue breve descrição dos arquivos:
 
-* **autoload.php**  - Esse arquivo contém duas funçõe que servem para carregar todos os arquivos **.php* dos módulos.
+* **autoload.php**  - Esse arquivo contém duas funçõe que servem para carregar todos os arquivos **.php** dos módulos.
 * **bootstrap.php** - Executa as ações de auto-carregamento e inicia a aplicação do Silex (**Silex\Application**).
-* **doctypes.php**  - Apenas define quais os tipos de doctype para de documento. Isso serve para auxiliar no desenvolvimento front-end. ** Não Obrigatório **
-* **mimes.php**     - Apenas define os MIME TYPES mais comuns para auxiliar no desenvolvimento back-end.  ** Não Obrigatório **
+* **doctypes.php**  - Apenas define quais os tipos de doctype para de documento. Isso serve para auxiliar no desenvolvimento front-end. **Não Obrigatório**
+* **mimes.php**     - Apenas define os MIME TYPES mais comuns para auxiliar no desenvolvimento back-end.  **Não Obrigatório**
 
 ## Conclusão
 
