@@ -177,4 +177,30 @@ class StringHelper
     {
         return (($num > 0) ? str_repeat($data, $num) : '');
     }
+
+    /**
+     * @param string $pharse
+     * @return array
+     */
+    public function extractKeyWords( $pharse = "" )
+    {
+        $eraseAccents      = array("!", "?", ".", ",", ":", ";", "'", "\"", "#", "$", "-", "_");
+        foreach($eraseAccents as $erase) {
+            $pharse = str_replace($erase, " ", $pharse);
+        }
+
+        $eraseWords   = array("de", "da", "do", "um", "uma", "uns", "umas", "o", "os", "a", "as", "á", "ás", "à", "às", "ó", "ós", "e", "és");
+
+        $arr = explode(" ", strtolower($pharse));
+        if( !is_array($arr) ) {
+            $arr = array($arr);
+        }
+
+        foreach( $arr as $key => $str ) {
+            if( in_array($str, $eraseWords) ) unset($arr[$key]);
+            if( trim($str) == "" ) unset($arr[$key]);
+        }
+
+        return $arr;
+    }
 }

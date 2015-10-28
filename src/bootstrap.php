@@ -31,7 +31,7 @@ if( file_exists("doctypes.php") ) require_once( "doctypes.php" );
 // Define os módulos utilizados
 $modulos = array(
     'Base', // Esse módulo contém helpers e uma interface. É legal utiliza-la
-    'Exemplo'
+    'Exemplo',
 );
 
 // Inicia aplicação
