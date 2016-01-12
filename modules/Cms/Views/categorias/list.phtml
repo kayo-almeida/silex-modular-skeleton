@@ -1,0 +1,29 @@
+<?php if( !empty($data) ) : ?>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Data Inserção</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach( $data as $item ) : ?>
+                <tr>
+                    <td><?php echo $item->id; ?></td>
+                    <td><?php echo $item->titulo; ?></td>
+                    <td><?php echo date("d/m/Y H:i", strtotime($item->data_cadastro)); ?></td>
+                    <td><a href="<?php echo $app['url_generator']->generate('categorias_update', array('id' => $item->id)); ?>">editar</a></td>
+                    <td><a href="<?php echo $app['url_generator']->generate('categorias_delete', array('id' => $item->id)); ?>">apagar</a></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else : ?>
+    <p>Nada para listar</p>
+<?php endif; ?>
+<hr>
+
+<a href="<?php echo $app['url_generator']->generate('categorias_insert'); ?>">Inserir Título</a>

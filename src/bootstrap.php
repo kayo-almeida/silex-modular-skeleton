@@ -29,9 +29,10 @@ if( file_exists("doctypes.php") ) require_once( "doctypes.php" );
 
 
 // Define os módulos utilizados
+// Todas as Classes que estão dentro dos diretórios Controllers serão instanciadas e recebendo $app como parametro
 $modulos = array(
     'Base', // Esse módulo contém helpers e uma interface. É legal utiliza-la
-    'Exemplo',
+    'Cms',
 );
 
 // Inicia aplicação
@@ -39,11 +40,7 @@ $app = new Silex\Application();
 $app['debug'] = DEBUG;
 
 // Inicia os controllers
-foreach( $modulos as $modulo ) {
-    core_autoload(BASEPATH . '/modules/' . $modulo);
-    $className = '\\Modules\\' . $modulo . '\\Controller\\' . $modulo;
-    if(class_exists($className)) new $className($app);
-}
+core_load_modules($modulos, $app);
 
 // Roda a aplicação
 $app->run();
