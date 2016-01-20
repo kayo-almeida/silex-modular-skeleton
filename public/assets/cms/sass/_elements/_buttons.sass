@@ -1,0 +1,27 @@
+%btn-panda
+  background:
+    color: $color_secondary
+  border: 1px solid $color_secondary_dark
+  color: $color_primary
+  @include rounded()
+
+  &:hover,
+  &:active,
+  &:active:hover,
+  &:active:focus,
+  &:focus
+    background:
+      color: $color_secondary_dark
+    border:
+      color: $color_secondary_dark
+    color: $color_primary
+    outline: 0
+    -moz-box-shadow: none
+    -webkit-box-shadow: none
+    box-shadow: none
+
+.dropdown-menu
+  i.fa
+    padding-right: 10px
+    color: $color_primary
+

@@ -1,0 +1,90 @@
+<main>
+    <section class="content">
+
+        <div class="title col-xs-12">
+            <h1><?php echo  mb_strtoupper($title); ?></h1>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb hidden-xs hidden-sm col-md-6">
+            <ul>
+                <li>
+                    <a href="<?php echo $app['url_generator']->generate($uri ."_list") ?>"><?php echo  mb_strtoupper($title); ?></a>
+                </li>
+                <li>
+                    <?php if( isset($form['data']['id']) ) : ?>
+                        <a href="">ATUALIZAR</a>
+                    <?php else : ?>
+                        <a href="">INCLUIR</a>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </div>
+        <!-- BREADCRUMB -->
+
+        <div class="page col-xs-12">
+            <!-- CONTENT -->
+            <div class="page-form">
+
+                <form action="<?php echo $app['url_generator']->generate($uri . "_save") ?>" method="post" enctype="multipart/form-data">
+
+                    <!--  Se for UPDATE, adicionar um campo ID  -->
+                    <?php $echo->input_hide("id"); ?>
+
+                    <div class="form-group <?php echo $echo->error("titulo"); ?>">
+                        <label for="titulo">* Nome</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" value="<?php $echo->value_text("titulo"); ?>">
+                    </div>
+
+                    <div class="form-group <?php echo $echo->error("email"); ?>">
+                        <label for="email">* E-mail</label>
+                        <input type="text" class="form-control" id="email" name="email" value="<?php $echo->value_text("email"); ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cargo">Cargo</label>
+                        <input type="text" class="form-control" id="cargo" name="cargo" value="<?php $echo->value_text("cargo"); ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <textarea type="text" class="form-control editor" id="descricao" name="descricao"><?php $echo->value_text("descricao"); ?></textarea>
+                    </div>
+
+                    <div class="form-group <?php echo $echo->error("imagem"); ?>">
+                        <label for="imagem">Foto do perfil</label>
+                        <input type="file" class="form-control" id="imagem" name="imagem">
+                    </div>
+
+                    <!--  Se houver imagem, adicionar um campo IMAGEM  -->
+                    <?php $echo->input_image("imagem"); ?>
+
+                    <div class="form-group <?php echo $echo->error("permissoes"); ?>">
+                        <label for="permissoes">* Permissões</label>
+                        <select class="form-control" id="permissoes" name="permissoes[]" multiple>
+                            <option value="usuarios" <?php $echo->value_mult_select("permissoes", "usuarios"); ?>>Usuários</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group <?php echo $echo->error("status"); ?>">
+                        <label for="status">* Status</label>
+                        <select class="form-control" id="status" name="status">
+                            <option value="">Selecione</option>
+                            <option value="ativo" <?php $echo->value_select("status", "ativo"); ?>>Ativo</option>
+                            <option value="inativo" <?php $echo->value_select("status", "inativo"); ?>>Inativo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group buttons">
+                        <a class="btn btn-default" href="<?php echo $app['url_generator']->generate($uri ."_list") ?>">Descartar</a>
+                        <input type="submit" class="btn btn-panda" value="Salvar">
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- CONTENT -->
+        </div>
+
+    </section>
+</main>

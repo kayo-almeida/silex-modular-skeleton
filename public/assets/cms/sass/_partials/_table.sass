@@ -1,0 +1,39 @@
+.page-table
+  height: 100%
+  padding:
+    bottom: 40px
+
+  .new
+    margin: 10px 0
+    padding: 0
+
+  table
+    width: 100%
+
+    thead
+      th
+        padding: 15px 7px
+        border:
+          bottom: 1px solid $color_gray
+
+    tbody
+      tr
+        td
+          padding: 7px
+          border:
+            bottom: 1px solid $color_gray
+
+        &:hover
+          background:
+            color: $color_gray_soft
+
+        .noresults
+          border: none
+
+          p
+            padding: 60px
+            text-align: center
+
+          &:hover
+            background:
+              color: $color_soft

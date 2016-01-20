@@ -1,0 +1,75 @@
+#login
+  font:
+    family: Lato, Arial, Helvetica, sans-serif
+    size: 1em
+    weight: 100
+  width: 100%
+  height: 100vh
+  background:
+    color: $color_primary_soft
+
+  .box-login
+    margin:
+      top: 130px
+    background:
+      color: $color_primary
+    padding: 50px
+    @include rounded(3%)
+
+    .logo-panda
+      margin: 20px auto 60px auto
+      text:
+        align: center
+
+    .error
+      background:
+        color: $color_primary_soft
+      color: $color_soft
+      display: block
+      margin: 20px 0
+      padding: 20px 0
+      text:
+        align: center
+      font:
+        weight: 700
+
+    .form-group
+      position: relative
+
+      label
+        color: $color_secondary
+        font:
+          weight: 400
+        padding: 0 5px
+        text:
+          transform: uppercase
+        position: absolute
+        left: 10px
+
+      input
+        background:
+          color: $color_primary
+        border:
+          top: none
+          left: none
+          right: none
+          bottom: 2px solid $color_primary
+        color: $color_soft
+        margin:
+          top: 50px
+        @extend %noborder
+
+        &:focus
+          @extend %nofocus
+          border:
+            bottom: 1px solid $color_primary_soft
+
+      .btn-panda
+        text:
+          transform: uppercase
+        font:
+          weight: 700
+        padding: 20px
+        margin-top: 60px
+        @extend %btn-panda
+        @include rounded(0.5)

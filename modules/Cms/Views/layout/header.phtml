@@ -1,12 +1,47 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="pt" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="pt" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="pt" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="pt" class="no-js"> <!--<![endif]-->
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>CMS</title>
+    <link href="<?php echo $url::assetsURL("cms/images/favicon.ico"); ?>" type="png" rel="shortcut icon">
+    <title>CMS - Painel Administrativo</title>
+
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="<?php echo $url::assetsURL("cms/components/bootstrap/dist/css/bootstrap.min.css"); ?>">
+    <link rel="stylesheet" href="<?php echo $url::assetsURL("cms/components/font-awesome/css/font-awesome.min.css"); ?>">
+    <link rel="stylesheet" href="<?php echo $url::assetsURL("cms/css/style.css"); ?>">
+    <!-- CSS -->
+
 </head>
 <body>
-<!-- ALERTA -->
+
+<!--[if lt IE 8]>
+<p>Seu navegador está <strong>desatualizado</strong>. Por favor, <a href="http://browsehappy.com/">atualize aqui</a> para ter uma melhor experiência.</p>
+<![endif]-->
+
+<!-- Modal de erros -->
 <?php if( $alert ) : ?>
-<h3 class="<?php echo $alert['type'] ?>"><?php echo $alert['message'] ?></h3>
-<hr>
+<div class="modal fade open-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo $alert['info'] ?></h4>
+            </div>
+            <div class="modal-body">
+                <?php echo $alert['message'] ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-panda" data-dismiss="modal">Entendi</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?php endif; ?>

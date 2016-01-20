@@ -1,0 +1,41 @@
+<aside>
+    <div class="logo">
+        <img class="logo-panda" src="<?php echo $url::assetsURL('cms/images/logo.png'); ?>" alt="The Aubergine Panda" title="The Aubergine Panda" />
+        <img class="icone-panda" src="<?php echo $url::assetsURL('cms/images/panda.png'); ?>" alt="The Aubergine Panda" title="The Aubergine Panda">
+    </div>
+
+
+    <div class="user">
+        <div class="photo">
+            <img src="<?php echo $url::assetsURL('cms/images/user.png'); ?>" alt="Nome do Usuário" title="Nome do Usuário" />
+        </div>
+
+        <div class="data">
+            <p>Nome do Usuário</p>
+        </div>
+
+        <div class="line"></div>
+    </div>
+
+    <!--  MENU  -->
+    <ul class="items">
+
+        <!--  Usuarios  -->
+        <li class="<?php echo $uri == "usuarios" ? "active" : "" ?>">
+            <a href="<?php echo $app['url_generator']->generate("usuarios_list") ?>">
+                <i class="fa fa-user"></i> <span>Usuários</span>
+            </a>
+        </li>
+
+    </ul>
+    <!--  FIM MENU  -->
+
+    <div class="footer">
+        <div class="panda col-sm-6">
+            <img src="<?php echo $url::assetsURL('cms/images/panda.png'); ?>" alt="The Aubergine Panda" title="The Aubergine Panda" />
+        </div>
+        <div class="col-xs-12 col-sm-6 logout">
+            <a><i class="fa fa-sign-out"></i> Sair</a>
+        </div>
+    </div>
+</aside>

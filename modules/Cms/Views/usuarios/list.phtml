@@ -1,0 +1,126 @@
+<main>
+    <section class="content">
+        <div class="title col-xs-12">
+            <h1><?php echo  mb_strtoupper($title); ?></h1>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb hidden-xs hidden-sm col-md-6">
+            <ul>
+                <li>
+                    <a href=""><?php echo  mb_strtoupper($title); ?></a>
+                </li>
+            </ul>
+        </div>
+        <!-- BREADCRUMB -->
+
+        <!-- SEARCH -->
+        <div class="search col-xs-12 col-sm-12 col-md-6">
+            <form class="form-horizontal" action="<?php echo \Modules\Base\Helper\UrlHelper::currentURL(); ?>" method="get">
+                <div class="form-group col-sm-11 col-xs-10">
+                    <input type="text" class="form-control" placeholder="Perquisar por..." name="titulo" id="titulo_search" value="<?php echo isset($_GET['titulo']) ? $_GET['titulo'] : "" ?>" />
+                </div>
+                <div class="form-group col-sm-1 col-xs-2">
+                    <button type="button" class="btn btn-panda"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+        <!-- SEARCH -->
+
+        <div class="page col-xs-12">
+            <!-- CONTENT -->
+            <div class="page-table">
+
+                <div class="new col-xs-12 col-sm-6">
+                    <a href="<?php echo $app['url_generator']->generate($uri . "_insert") ?>" class="btn btn-panda"><i class="fa fa-plus-circle"></i> Inserir</a>
+                </div>
+
+                <div class="new col-xs-12 col-sm-6">
+                    <div class="btn-group pull-right">
+                        <label for="language">Ação em massa</label>
+                        <select class="form-control" id="acoes-em-massa">
+                            <option value="">Selecione</option>
+                            <?php if( $status == "ativo" ) : ?>
+                                <option value="excluir">Excluir selecionados</option>
+                                <option value="desativar">Desativar selecionados</option>
+                            <?php elseif( $status == "inativo" ) : ?>
+                                <option value="excluir">Excluir selecionados</option>
+                                <option value="ativar">Ativar selecionados</option>
+                            <?php elseif( $status == "lixeira" ) : ?>
+                                <option value="restaurar">Restaurar selecionados</option>
+                                <option value="excluir definitivamente">Excluir definitivamente selecionados</option>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="new col-xs-12 col-sm-12 list-filters-status">
+                    <a href="<?php echo $app['url_generator']->generate($uri . "_list") ?>" class="<?php echo $status == "ativo"? "ativo" : "" ?>">Ativos <span class="badge"><?php echo $countAtivos ?></span></a> |
+                    <a href="<?php echo $app['url_generator']->generate($uri . "_inactive") ?>" class="<?php echo $status == "inativo"? "ativo" : "" ?>">Inativos <span class="badge"><?php echo $countInativos ?></span></a> |
+                    <a href="<?php echo $app['url_generator']->generate($uri . "_trash") ?>" class="<?php echo $status == "lixeira"? "ativo" : "" ?>">Lixeira <span class="badge"><?php echo $countLixeira ?></span></a>
+                </div>
+
+                <table>
+                    <thead>
+                    <th><input type="checkbox" /></th>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Última atualização</th>
+                    <th>Ação</th>
+                    </thead>
+                    <?php if( !empty($data) ) : ?>
+                        <tbody>
+                            <!-- LISTA DE RESULTADOS -->
+                            <?php foreach( $data as $item ) : ?>
+                                <tr>
+                                    <td><input type="checkbox" name="marked" value="<?php echo $item->id ?>" /></td>
+                                    <td><a href="<?php echo $app['url_generator']->generate($uri . "_update", array("id" => $item->id)) ?>"><?php echo $item->id ?></a></td>
+                                    <td><a href="<?php echo $app['url_generator']->generate($uri . "_update", array("id" => $item->id)) ?>"><?php echo $item->titulo ?></a></td>
+                                    <td><a href="<?php echo $app['url_generator']->generate($uri . "_update", array("id" => $item->id)) ?>"><?php echo $item->email ?></a></td>
+                                    <td><a href="<?php echo $app['url_generator']->generate($uri . "_update", array("id" => $item->id)) ?>"><?php echo date("d/m/Y H:i", strtotime($item->data_atualizacao)) ?></a></td>
+                                    <td>
+                                        <!-- Single button -->
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-panda dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-cog"></i> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <?php if( $status == "ativo" ) : ?>
+                                                    <li><a href="<?php echo $app['url_generator']->generate($uri . "_update", array("id" => $item->id)) ?>"><i class="fa fa-pencil"></i> Editar</a></li>
+                                                    <li><a href="<?php echo $app['url_generator']->generate($uri . "_action_inactive", array("id" => $item->id, "uri" => $uri . "_list")) ?>"><i class="fa fa-toggle-off"></i> Desativar</a></li>
+                                                    <li><a href="<?php echo $app['url_generator']->generate($uri . "_action_trash", array("id" => $item->id, "uri" => $uri . "_list")) ?>"><i class="fa fa-trash"></i> Excluir</a></li>
+                                                <?php elseif( $status == "inativo" ) : ?>
+                                                    <li><a href="<?php echo $app['url_generator']->generate($uri . "_update", array("id" => $item->id)) ?>"><i class="fa fa-pencil"></i> Editar</a></li>
+                                                    <li><a href="<?php echo $app['url_generator']->generate($uri . "_action_active", array("id" => $item->id, "uri" => $uri . "_inactive")) ?>"><i class="fa fa-toggle-on"></i> Ativar</a></li>
+                                                    <li><a href="<?php echo $app['url_generator']->generate($uri . "_action_trash", array("id" => $item->id, "uri" => $uri . "_inactive")) ?>"><i class="fa fa-trash"></i> Excluir</a></li>
+                                                <?php elseif( $status == "lixeira" ) : ?>
+                                                    <li><a href="<?php echo $app['url_generator']->generate($uri . "_action_restore", array("id" => $item->id, "uri" => $uri . "_trash")) ?>"><i class="fa fa-recycle"></i> Restaturar</a></li>
+                                                    <li><a href="<?php echo $app['url_generator']->generate($uri . "_action_delete", array("id" => $item->id, "uri" => $uri . "_trash")) ?>"><i class="fa fa-times"></i> Excluir definitivamente</a></li>
+                                                <?php endif; ?>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <!-- LISTA DE RESULTADOS -->
+                    <?php else : ?>
+
+                        <!-- SE NAO TIVER RESULTADOS -->
+                        <tr>
+                            <td colspan="5" class="noresults">
+                                <p>Nenhum resultado encontrado</p>
+                            </td>
+                        </tr>
+                        <!-- SE NAO TIVER RESULTADOS -->
+
+                        </tbody>
+                    <?php endif; ?>
+                </table>
+
+            </div>
+            <!-- CONTENT -->
+        </div>
+
+    </section>
+</main>

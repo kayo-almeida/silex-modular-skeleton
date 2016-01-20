@@ -1,0 +1,327 @@
+@import compass/reset
+@import _elements/variables
+@import _elements/mixin
+@import _elements/buttons
+@import _elements/common
+@import _partials/login
+@import _partials/table
+@import _partials/form
+
+html
+  height: 100%
+  min-height: 100% !important
+  height: auto !important
+
+body
+  height: 100%
+  min-height: 700px
+  color: $color_dark !important
+  background:
+    color: $color_gray
+  font:
+    family: Lato, Arial, Helvetica, sans-serif
+    size: 1em
+    weight: 100
+
+main
+  height: 100%
+  overflow: auto
+  min-height: 100%
+
+a
+  cursor: pointer
+
+  &:hover
+    text:
+      decoration: none
+
+.btn-panda
+  @extend %btn-panda
+
+aside
+  background:
+    color: $color_primary
+  height: 100%
+  position: absolute
+  width: $aside_width
+  transition-duration: .3s
+  @media (max-width: 1199px)
+    width: $aside_width_mobile
+
+
+  .logo
+    position: relative
+    display: block
+    top: 10px
+    text-align: center
+    height: 45px
+    transition-duration: .3s
+    @media (max-width: 1199px)
+      height: auto
+    .logo-panda
+      @media (max-width: 1199px)
+        display: none
+    .icone-panda
+      width: 40px
+      @media (min-width: 1199px)
+        display: none
+
+  .user
+    clear: both
+    margin: 25px auto
+    display: block
+    overflow: hidden
+    @media (max-width: 1199px)
+      margin: 10px auto
+
+    .photo
+      text:
+        align: center
+      margin: 25px auto
+      width: 60px
+      height: 60px
+      overflow: hidden
+      @include rounded(50%)
+      @media (max-width: 1199px)
+        width: 40px
+        height: 40px
+
+      img
+        width: 60px
+        @media (max-width: 1199px)
+          width: 40px
+
+    .data
+      text:
+        align: center
+      color: $color_secondary
+      margin: 10px 0
+      @media (max-width: 1199px)
+        display: none
+
+    .line
+      height: 1px
+      width: 80px
+      margin: 0 auto
+      background:
+        color: $color_secondary
+      @media (max-width: 1199px)
+        width: 40px
+
+  .footer
+    position: absolute
+    padding-bottom: 20px
+    bottom: 0
+    width: 100%
+
+    .panda
+      img
+        width: 60px
+      @media (max-width: 1199px)
+        display: none
+
+    .logout
+      text-align: right
+      margin-top: 50px
+
+      a
+        color: $color_secondary
+        font:
+          size: 0.8em
+          weight: 700
+        text:
+          transform: uppercase
+
+        &:hover
+          color: $color_soft
+        i
+          @media (max-width: 1199px)
+            display: none
+
+  .items
+    li
+      font:
+        size: 0.8em
+      text:
+        transform: uppercase
+      width: 100%
+      cursor: pointer
+      @media (max-width: 1199px)
+        font:
+          size: 1.5em
+      &:hover, &.active
+        background:
+          color: $color_primary_dark
+
+        a
+          color: $color_secondary
+
+      a
+        color: $color_soft
+        display: block
+        font:
+          weight: 400
+        padding: 15px 25px
+
+        @media (max-width: 1199px)
+          padding: 15px 0px
+          text-align: center
+
+        i
+          margin: 0 15px
+        span
+          @media (max-width: 1199px)
+            display: none
+
+.content
+  height: 100%
+  overflow: hidden
+  width: 100%
+  padding:
+    left: $aside_width + 25px
+    top: 25px
+    bottom: 25px
+    right: 25px
+  transition-duration: .3s
+  @media (max-width: 1199px)
+    padding:
+      left: $aside_width_mobile + 25px
+
+  .title
+    font:
+      size: 1.8em
+    margin: 15px 0
+    padding: 0
+
+  .breadcrumb
+    background:
+      color: transparent
+    margin: 5px 0 20px 0
+    padding: 0
+
+    ul
+      li
+        padding: 0 5px
+        margin: 5px 0
+        display: inline-block
+        border:
+          right: 1px solid $color_gray_dark
+
+        &:last-child
+          border: none
+
+        a
+          color: $color_primary_soft
+          font:
+            size: 0.8em
+
+          &:hover
+            color: $color_primary_dark
+
+  .search
+    margin: 0
+    padding: 0
+
+    .form-group
+      margin: 0
+      padding: 0
+
+      input
+        background:
+          color: $color_gray_soft
+        border:
+          top: none
+          left: none
+          right: none
+          bottom: 1px solid $color_primary
+        padding: 20px 25px
+        @extend %nofocus
+        @extend %noborder
+
+        &:focus
+          @extend %noborder
+          @extend %nofocus
+
+      .btn-panda
+        padding: 10px 0
+        width: 100%
+        @extend %noborder
+
+  .page
+    background:
+      color: $color_soft
+    padding: 15px 15px 60px 15px
+    overflow: hidden
+    border:
+      top: 5px solid $color_gray_dark
+
+    .page-title
+      h1
+        font:
+          size: 1.4em
+        margin: 10px 0
+
+      h2
+        font:
+          size: 1.2em
+        margin: 10px 0
+
+  .top-products
+    overflow: hidden
+
+    .data
+      .products
+        background:
+          color: $color_gray
+        padding:
+          top: 15px
+          left: 15px
+          bottom: 60px
+          right: 15px
+        position: relative
+        a
+          display: block
+
+        .title
+          font:
+            size: 1.6em
+          text-align: center
+          margin: 25px 0
+
+        .infos
+          table
+            width: 100%
+
+            thead
+              th
+                padding: 5px
+                text-align: center
+
+            tbody
+              tr
+                td
+                  text-align: center
+                  padding: 7px 0
+                  font:
+                    weight: 100
+
+        .btn
+          position: absolute
+          bottom: 0
+          display: block
+          width: 90%
+          margin: 10px auto
+
+.form-group.has-error
+  label
+    color: #a94442
+
+  input[type=file]
+    background-color: #a94442
+    color: #fff
+
+  .cke
+    border: 1px solid #a94442
+
+.list-filters-status .ativo
+  color: #2d113e

@@ -1,0 +1,17 @@
+@mixin rounded($round: 0.5)
+  -webkit-border-radius: $round
+  -moz-border-radius: $round
+  border-radius: $round
+
+@mixin placeholder($color: #ffffff)
+  &::-webkit-input-placeholder
+    color: $color
+
+  &:-moz-placeholder
+    color: $color
+
+  &::-moz-placeholder
+    color: $color
+
+  &:-ms-input-placeholder
+    color: $color

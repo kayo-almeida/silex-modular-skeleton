@@ -1,2 +1,33 @@
+<!-- SCRIPTS -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="<?php echo $url::assetsURL('cms/components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo $url::assetsURL('cms/components/ckeditor/ckeditor.js'); ?>"></script>
+<script src="<?php echo $url::assetsURL('cms/js/editor.js'); ?>"></script>
+<script src="<?php echo $url::assetsURL('cms/js/animations.js'); ?>"></script>
+<script src="<?php echo $url::assetsURL('cms/js/bootbox.js'); ?>"></script>
+<script src="<?php echo $url::assetsURL('cms/js/acoes_em_massa.js'); ?>"></script>
+
+<script type="text/javascript">
+    // START MODALS OPEN
+    $(window).load(function(){
+        $('.open-modal').modal('show');
+    });
+
+    // Variaveis GLOBAIS
+    var base_url    = "<?php echo \Modules\Base\Helper\UrlHelper::baseURL(); ?>";
+    var public_url  = "<?php echo \Modules\Base\Helper\UrlHelper::publicURL(); ?>";
+    var current_url = "<?php echo \Modules\Base\Helper\UrlHelper::currentURL(); ?>";
+    var current_uri = "<?php echo $uri; ?>";
+
+    var action_delete   = "<?php echo $app['url_generator']->generate($uri . "_action_delete", array("id" => "THE_ID", "uri" => $uri . "_trash")) ?>";
+    var action_trash    = "<?php echo $app['url_generator']->generate($uri . "_action_trash", array("id" => "THE_ID", "uri" => $uri . "_list")) ?>";
+    var action_inactive = "<?php echo $app['url_generator']->generate($uri . "_action_inactive", array("id" => "THE_ID", "uri" => $uri . "_list")) ?>";
+    var action_active   = "<?php echo $app['url_generator']->generate($uri . "_action_active", array("id" => "THE_ID", "uri" => $uri . "_inactive")) ?>";
+    var action_restore  = "<?php echo $app['url_generator']->generate($uri . "_action_restore", array("id" => "THE_ID", "uri" => $uri . "_trash")) ?>";
+
+</script>
+
+<!-- SCRIPTS -->
 </body>
 </html>

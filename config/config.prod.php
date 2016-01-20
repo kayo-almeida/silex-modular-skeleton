@@ -15,12 +15,12 @@ define( "APPURL", "http://localhost/silex-modular-skeleton/public" );
 // BANCO DE DADOS
 define( "DB_DRIVER", "mysql" );
 define( "DB_HOST", "localhost" );
-define( "DB_NAME", "exemplo" );
+define( "DB_NAME", "cms" );
 define( "DB_USERNAME", "root" );
 define( "DB_PASSWORD", "root" );
 define( "DB_CHARSET", "utf8" );
 define( "DB_COLLATION", "utf8_unicode_ci" );
-define( "DB_PREFIX", "exe_" );
+define( "DB_PREFIX", "cms_" );
 
 // E-MAIL
 define("SMTP_HOST", "smtp.gmail.com");
